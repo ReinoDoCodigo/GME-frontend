@@ -1,5 +1,6 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
 @import "tailwindcss";
+@import "login.css";
 .fresh-gradient {
   background-color: rgb(134, 239, 172);
   background-image: linear-gradient(

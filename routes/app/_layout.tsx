@@ -1,5 +1,5 @@
 import Navbar from "@/islands/Navbar.tsx";
-import { define } from "../utils.ts";
+import { define } from "@/utils.ts";
 import Sidebar from "@/islands/Sidebar.tsx";
 
 export default define.page(function App({ Component }) {
