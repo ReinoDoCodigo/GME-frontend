@@ -1,8 +1,8 @@
-import Navbar from "@/islands/Navbar.tsx";
 import { define } from "@/utils.ts";
 import Sidebar from "@/islands/Sidebar.tsx";
 
-export default define.page(function App({ Component }) {
+export default define.page(function App({ Component, url }) {
+  const pathname = url.pathname;
   return (
     <html>
       <head>
@@ -11,11 +11,10 @@ export default define.page(function App({ Component }) {
         <title>GME-front</title>
       </head>
       <body>
-          <header>
-            <Navbar/>
-          </header>
        <div class="app-body">
-            <Sidebar/>
+          <aside>
+            <Sidebar actualPage={pathname}/>
+          </aside>
           <main class="app-main">
             <Component/>
           </main>

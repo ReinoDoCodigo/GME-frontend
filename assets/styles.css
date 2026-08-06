@@ -16,10 +16,29 @@
   min-height: calc(100vh - 60px);
 }
 
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.statusCard {
+  font-weight: bold;
+  padding: 30px;
+}
+
 .app-main {
   flex: 1;
   min-width: 0;
   padding: 1.5rem;
+}
+
+.TableDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  min-height: 100vh;
 }
 
 @media (max-width: 1023px) {

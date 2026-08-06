@@ -71,28 +71,31 @@ const groups: MenuGroup[] = [
   {
     label: "Geral",
     items: [
-      { key: "dashboard", label: "Dashboard", icon: icons.home, href: "/" },
-      { key: "usuarios", label: "Usuários", icon: icons.users, href: "/usuarios" },
-      { key: "relatorios", label: "Relatórios", icon: icons.chart, href: "/relatorios" },
+      { key: "dashboard", label: "Dashboard", icon: icons.home, href: "/app/" },
+      { key: "relatorios", label: "Relatórios", icon: icons.chart, href: "/app/relatorios" },
+      { key: "config", label: "Configurações", icon: icons.settings, href: "/config" },
     ],
   },
   {
     label: "Administração",
     items: [
+      { key: "usuarios", label: "Usuários", icon: icons.users, href: "/app/usuarios" },
       { key: "departamentos", label: "Departamentos", icon: icons.building, href: "/departamentos" },
-      { key: "config", label: "Configurações", icon: icons.settings, href: "/config" },
+      { key: "equipamentos", label: "Departamento", icon: icons.logout, href: "/departamentos" },    
     ],
   },
 ];
 
 export interface SidebarProps {
-  activeKey?: string;
+  actualPage: string;
 }
 
-export default function Sidebar({ activeKey = "dashboard" }: SidebarProps) {
+export default function Sidebar({ actualPage }: SidebarProps) {
   const [colapsado, setColapsado] = useState(false);
   const [mobileAberto, setMobileAberto] = useState(false);
   const largura = colapsado ? "4rem" : "15rem";
+  const isAtivo = (href: string) => actualPage === href;
+  
 
   return (
     <>
@@ -121,6 +124,7 @@ export default function Sidebar({ activeKey = "dashboard" }: SidebarProps) {
             </span>
           )}
           <button
+            type="button"
             class="button is-small is-rounded"
             style={{ background: "transparent", border: "1px solid rgba(255,255,255,.3)", color: "#fff" }}
             onClick={() => setColapsado(!colapsado)}
@@ -146,7 +150,7 @@ export default function Sidebar({ activeKey = "dashboard" }: SidebarProps) {
               )}
               <ul class="menu-list">
                 {grupo.items.map((item) => {
-                  const ativo = item.key === activeKey;
+                  const ativo = isAtivo(item.href)
                   return (
                     <li>
                       <a
@@ -198,6 +202,7 @@ export default function Sidebar({ activeKey = "dashboard" }: SidebarProps) {
         <div class="is-flex is-align-items-center is-justify-content-space-between px-3 py-3">
           <span class="has-text-weight-bold" style={{ fontSize: "1.1rem" }}>Painel</span>
           <button
+            type="button"
             class="button is-small is-rounded"
             style={{ background: "transparent", border: "1px solid rgba(255,255,255,.3)", color: "#fff" }}
             onClick={() => setMobileAberto(!mobileAberto)}
@@ -217,7 +222,7 @@ export default function Sidebar({ activeKey = "dashboard" }: SidebarProps) {
                 </p>
                 <ul class="menu-list">
                   {grupo.items.map((item) => {
-                    const ativo = item.key === activeKey;
+                    const ativo = isAtivo(item.href);
                     return (
                       <li>
                         <a

@@ -2,12 +2,14 @@ import { define } from "@/utils.ts";
 import Table from "@/islands/Table.tsx";
 
 
-export default define.page(function Usuarios() {
+export default define.page(function Usuarios(ctx) {
 
      const columns = [
-    { key: "nome", label: "Nome" },
+    { key: "nome", label: "Nome", },
+    { key: "cargo", label: "Cargo" },
+    { key: "departamento", label: "Departamento" },
+    {key: "local", label: "Local"},
     { key: "idade", label: "Idade" },
-    { key: "cidade", label: "Cidade" },
   ];
     const pessoas = [
         {
@@ -28,7 +30,7 @@ export default define.page(function Usuarios() {
     ];
 
     return (
-        <div>
+        <div class="TableDiv">
             <Table 
                 columns={columns}
                 data={pessoas}
